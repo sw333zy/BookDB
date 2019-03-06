@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="base :: headstuff">
+</head>
+<body>
+
+
+<div class="container">
+    <nav th:replace="base :: navbar"></nav>
+
+    <h5>Enter a book</h5>
+    <br/><br/>
+    <form action="#" th:action="@{/process}" th:object="${book}" method="post">
+        <input th:field="*{id}" type="hidden"/>
+        <div class="form-group">
+            <label for="bookTitle"><b>Title</b></label>
+            <input class="form-control" id="bookTitle" placeholder="Name Your book" th:field="*{title}"
+                   type="text">
+            <span th:errors="*{title}"
+                  th:if="${#fields.hasErrors('title')}"></span><br/>
+        </div>
+
+        <div class="form-group">
+            <label for="author"><b>Author</b></label>
+            <input class="form-control" id="author" placeholder="@name" th:field="*{author}" type="text">
+            <span th:errors="*{author}"
+                  th:if="${#fields.hasErrors('author')}"></span><br/>
+        </div>
+
+        <div class="form-group">
+            <label for="bookDescription"><b>Description</b></label>
+            <textarea class="form-control" id="bookDescription"  placeholder="Your book Here" rows="3" th:field="*{description}"></textarea>
+            <span th:errors="{description}"
+                  th:if="${#fields.hasErrors('description')}"></span><br/>
+        </div>
+
+        <div class="form-group">
+            <label for="price"><b>Price</b></label>
+            <input class="form-control" id="price" placeholder="@name" th:field="*{price}" type="text">
+            <span th:errors="*{price}"
+                  th:if="${#fields.hasErrors('price')}"></span><br/>
+        </div>
+
+        <div class="form-group">
+            <label for="numInStock"><b>In Stock</b></label>
+            <input class="form-control" id="numInStock" placeholder="@name" th:field="*{numInStock}" type="text">
+            <span th:errors="*{numInStock}"
+                  th:if="${#fields.hasErrors('numInStock')}"></span><br/>
+        </div>
+        <input type="submit" value="Submit"/>
+    </form>
+
+    <nav th:replace="base :: foot"></nav>
+    <th:block th:replace="base :: jslinks"></th:block>
+</div>
+
+</body>
+</html>

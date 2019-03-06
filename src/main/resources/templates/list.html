@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="base :: headstuff">
+</head>
+<body>
+<div class="container"><nav th:replace="base :: navbar"></nav>
+    <br/>
+    <a href="/add">Add a new book?</a><br/>
+    <br/>
+    <div th:each="book : ${books}">
+        <div th:replace="base :: book"></div>
+    </div>
+    <nav th:replace="base :: foot"></nav>
+    <th:block th:replace="base :: jslinks"></th:block>
+</div>
+</body>
+</html>
